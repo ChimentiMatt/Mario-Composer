@@ -1,0 +1,186 @@
+@import url('http://fonts.cdnfonts.com/css/new-super-mario-font-u');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  /* border: 1px solid black; */
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: grab;
+  background: #E52521;
+  font-family: 'New Super Mario Font U', sans-serif;
+
+}
+
+.logo{
+  text-shadow: -1px 0 black, 0 3px black, 4px 0 black, 0 5px black;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+button:hover{
+  background-color: rgb(73, 201, 73);
+}
+
+#noteSection{
+  /* transform: scale(.5); */
+  background: rgb(92, 182, 212);
+  background: white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow-x: scroll; 
+  overflow-y: hidden; 
+  position: relative;
+  z-index: 5;
+  border: 5px solid black;
+}
+
+#noteDurations{
+  position: relative;
+  top: -1.5rem;
+  width: 1rem;
+  height: 0rem;
+  transform: scale(1.3);
+}
+
+#top{
+  position: relative;
+  z-index: 1;
+}
+
+#playMarker{
+  position: absolute;
+  margin-left: -8rem;
+  margin-top: -3.5rem;
+  font-weight: bold;
+  color: green;
+  height: 4rem;
+  z-index: 10;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+#toastTextTop{
+  position: absolute;
+  text-align: center;
+  top: 0rem;
+  left: 40rem;
+  width: 22rem;
+  justify-content: center;
+  z-index: 0;
+  visibility: hidden;
+  opacity: 0;
+  font-size: 1.5rem;
+  background: #1a1a1a;
+  color: white;
+  padding: 1rem;
+}
+
+
+
+#toastText{
+  position: absolute;
+  text-align: center;
+  bottom: 0rem;
+  left: 30rem;
+  width: 22rem;
+  justify-content: center;
+  z-index: 0;
+  visibility: hidden;
+  opacity: 0;
+  font-size: 1.5rem;
+  background: #1a1a1a;
+  color: white;
+  padding: 1rem;
+}
+
+#noteSection::-webkit-scrollbar {
+  width: 1rem;
+
+}
+ 
+#noteSection::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+#noteSection::-webkit-scrollbar-thumb {
+  background-color: rgb(22 163 74);
+
+}
+
+
+
+#songsList::-webkit-scrollbar {
+  width: 1rem;
+
+}
+ 
+#songsList::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+#songsList::-webkit-scrollbar-thumb {
+  background-color: rgb(22 163 74);
+
+}
+
+
+/* When screen length is above a standard monitor can still scroll until the end */
+@media only screen and (min-width: 2000px) {
+  #rightOfSheetWhiteSpace{
+    width: 250rem;
+  }
+  #playMarker{
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 668px) {
+  .App{
+    /* display: none; */
+  }
+  
+  #wrongRatioMessage{
+    /* display: block; */
+  }
+
+}
+
+@media only screen and (min-width: 1700px) {
+  .App{
+    display: block;
+  }
+  #wrongRatioMessage{
+    display: none;
+  }
+
+  #playMarker{
+    position: relative;
+    margin-left: 10.5rem;
+    margin-top: -7rem;
+    font-weight: bold;
+    color: green;
+    height: 8rem;
+    z-index: 10;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+  }
+
+  
+}

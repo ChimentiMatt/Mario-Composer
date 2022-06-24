@@ -1,0 +1,32 @@
+{
+  "name": "MarioMusic",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ChimentiMatt/Mario-Music-MERN.git",
+  "author": "<matthewosu@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "concurrent": "concurrently -p [{name}] -c bgBlue.bold,bgGreen.bold -n API,UI",
+    "start": "yarn concurrent \"cd api && yarn start\" \"cd ui && yarn start\""
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "bcrypt": "^5.0.1",
+    "concurrently": "^7.2.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.4.0",
+    "morgan": "^1.10.0",
+    "react-router-dom": "6"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
+    "mocha": "^10.0.0",
+    "nodemon": "^2.0.18",
+    "nyc": "^15.1.0"
+  }
+}
