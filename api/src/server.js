@@ -30,35 +30,47 @@ app.use("/auth", authRoutes)
 app.use("/song", songRoutes)
 
 // Connect to Database
-const connectDatabaes = async (DB_NAME=process.env.DB_NAME) => {
-    const connection = await mongoose.connect(`mongodb://localhost/${DB_NAME}`)
-    if(process.env.ENV != "test"){
-        console.log(`😎 Connected to mongodb://localhost/${DB_NAME}`)
-    }
-    return connection
+// const connectDatabaes = async (DB_NAME=process.env.DB_NAME) => {
+//     const connection = await mongoose.connect(`mongodb://localhost/${DB_NAME}`)
+//     if(process.env.ENV != "test"){
+//         console.log(`😎 Connected to mongodb://localhost/${DB_NAME}`)
+//     }
+//     return connection
+// }
+
+// Connect to DB Production
+const connectDatabaes = async () =>{  mongoose.connect(
+        process.env.MONGODB_CONNECTION_STRING,
+            {
+                useNewUrlParser: true,
+                useUnifiedTopology: true,
+            }
+    )
+    .then(() => console.log("😎 MongoDB has been connected"))
+    .catch((err) => console.log('ERROR-------------', err, '\n ----', process.env.MONGODB_CONNECTION_STRING));
 }
 
-
+const PORT = process.env.API_PORT || 500
 
 // Start Server
 const startServer = () => {
-    app.listen(process.env.API_PORT , async () => {
+    app.listen(PORT , async () => {
         await connectDatabaes()
         if (process.env.ENV != "test"){
-            console.log(`🚀 Server listening on http://localhost:${process.env.API_PORT}`)
+            console.log(`🚀 Server listening on http://localhost:${PORT}`)
         }
     })
 }
 
 
-// const { MongoClient, ServerApiVersion } = require('mongodb');
-// const uri = `mongodb+srv://${process.env.DB_NAME}:<${process.env.DB_PASSWORD}>@cluster0.efsf4uu.mongodb.net/?retryWrites=true&w=majority`;
-// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-// client.connect(err => {
-//   const collection = client.db("test").collection("devices");
-//   // perform actions on the collection object
-//   client.close();
-// });
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = `mongodb+srv://${process.env.ATLAS_USER}:<${process.env.ATLAS_PASS}>@cluster0.efsf4uu.mongodb.net/?retryWrites=true&w=majority`;
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
 
 
 module.exports = {
